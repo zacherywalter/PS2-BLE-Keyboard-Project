@@ -1,0 +1,88 @@
+Char | HEX
+a | 1C F01C
+b | 32 F032
+c | 21 F021
+d | 23 F023
+e | 24 F024
+f | 2B F02B
+g | 34 F034
+h | 33 F033
+i | 43 F043
+j | 3B F03B
+k | 42 F042
+l | 4B F04B
+m | 3A F03A
+n | 31 F031
+o | 44 F044
+p | 4D F04D
+q | 15 F015
+r | 2D F02D
+s | 1B F01B
+t | 2C F02C
+u | 3C F03C
+v | 2A F02A
+w | 1D F01D
+x | 22 F022
+y | 1A F01A
+z | 35 F035
+
+Function key | keycode HEX | ascii HEX
+f1  | 5  F0 5  | C2
+f2  | 6  F0 6  | C3
+f3  | 4  F0 4  | C4
+f4  | C  F0 C  | C5
+f5  | 3  F0 3  | C6
+f6  | B  F0 B  | C7
+f7  | 83 F0 83 | C8
+f8  | A  F0 A  | C9
+f9  | 1  F0 1  | CA
+f10 | 9  F0 9  | CB
+f11 | 78 F0 78 | CC
+f12 | 7  F0 7  | CD
+
+
+KeyboardButton | Keycode
+tab | 0D F0 0D
+esc | 76 F0 76
+insert | E070 E0F070
+entf | E071 E0F071
+left arrow | E06B E0F06B
+down arrow | E072 E0F072
+right arrow | E074 E0F074
+up arrow | E075 E0F075
+
+end | E069 E0F069
+pagedown | E07A E0F07A
+pageup | E07D E0F07D
+home | E06C E0F06C
+
+left win | E01F E0F01F
+
+right win | E027 E0F027
+left shift | 12 F012
+right shift | 59 F059
+left ctrl | 14 F014
+left alt | 11 F011
+right alt | E011 E0F011
+
+scrolllock | 7E F07E
+numlock | 77 F077
+capslock | 58 F058
+right alt gr | E011 E0F011
+Menu key |E02F E0F02F
+
+Possible Realisation for Fn + Function keys
+
+FN
+f1  5  F0 5  prev track (disply change?)
+f2  6  F0 6  play pause
+f3  4  F0 4  next track (dim brightness?)
+f4  C  F0 C  stop (increase brightness?)
+f5  3  F0 3  mute
+f6  B  F0 B  volume down
+f7  83 F0 83 volume up
+f8  A  F0 A  Calculator (mute mic?)
+f9  1  F0 1  WWW_Search
+f10 9  F0 9  WWW_Back
+f11 78 F0 78 Wifi Off/On?
+f12 7  F0 7  Nightmode?
