@@ -81,6 +81,7 @@ void Modifier_Detect(uint8_t MODIFIER) {
     bleKeyboard.press(MODIFIER);      //No previous Shift detected before now, so set Shift_Key flag now
     Serial.print("pressed: ");
     Serial.println(MODIFIER, HEX);
+    
   }
   else {                           //if key was released
     KeyRelease_Flag = 0x00;        //Clear key-release flag, too
@@ -103,6 +104,28 @@ void Toggle_LED_States(uint8_t LED_Toggle) {  //bit 2 = capslock, bit 1 = number
   } else {
     Serial.println(" led change state command Response not recognised");
   }
+}
+
+void setTypematicByte(void){
+  delay(20);
+  Serial.println("getting scan code set");
+  kbd.write(0xF3);
+  delay(20);
+  uint32_t Response = kbd.read();        //get response
+  Serial.println(Response, HEX);
+  //bit7 0 bit 6,5 01b 500ms bit 4,0 00000b 30Hz repeat
+  kbd.write(0b00100000);
+  delay(20);
+  Response = kbd.read();        //get response
+  Serial.println(Response, HEX);
+  /*
+  Response = kbd.read();        //get response
+  Serial.println(Response, HEX);
+  Response = kbd.read();        //get response
+  Serial.println(Response, HEX);
+  Response = kbd.read();        //get response
+  Serial.println(Response, HEX);
+  */
 }
 
 
@@ -225,6 +248,7 @@ void setup(){
   Serial.println("Starting BLE work!");
   bleKeyboard.begin();              //initialise bluetooth keyboard hid
   kbd_init();                       //initialise ps2 keyboard
+  setTypematicByte();
 }
 
 void loop(){

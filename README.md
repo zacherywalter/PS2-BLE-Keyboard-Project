@@ -30,7 +30,7 @@ This Project includes code to help revive your old ps2 keyboard to a bluetooth k
 
 ### Missing Features/Todos
 
-- [ ] Highlighting words using Shift and arrow keys not working
+- [ ] Highlighting words using Shift and arrow keys only works with right shift, don't know why.
 
 - [ ] Numlock and Scrolllock only toggle the leds on the keyboard
 
