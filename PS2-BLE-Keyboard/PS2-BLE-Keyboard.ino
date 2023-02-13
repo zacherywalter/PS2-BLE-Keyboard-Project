@@ -8,6 +8,7 @@
 
 #include <ps2.h>
 #include <BleKeyboard.h>
+#include "espAdcLut.h"
 //Lowercase array with Function keys added, 16 elements per row
 uint8_t LC_Array[] =
 { 0x00, 0xCA, 0x00, 0xC6, 0xC4, 0xC2, 0xC3, 0xCD, 0x00, 0xCB, 0xC9, 0xC7, 0xC5, 0xB3, 0x60, 0x00, //0   - 15
@@ -50,8 +51,10 @@ uint8_t EX_Array[] =
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00  //240 - 255
 };
 
+#define BAT_LEVEL_PIN 34
+
 //initialise blekeyboard object with ("device name", "manufacturer", initial battery level)
-BleKeyboard bleKeyboard("ZacheryKeyboard", "Isaac Industries", 100);
+BleKeyboard bleKeyboard("ZacheryKeyboard", "Isaac Industries", 80);
 
 //initialise ps2 object
 //Pin 17 is the ps2 data pin, pin 22 is the clock pin
@@ -118,14 +121,6 @@ void setTypematicByte(void){
   delay(20);
   Response = kbd.read();        //get response
   Serial.println(Response, HEX);
-  /*
-  Response = kbd.read();        //get response
-  Serial.println(Response, HEX);
-  Response = kbd.read();        //get response
-  Serial.println(Response, HEX);
-  Response = kbd.read();        //get response
-  Serial.println(Response, HEX);
-  */
 }
 
 
@@ -246,9 +241,11 @@ void handle_LEDS(void) {
 void setup(){
   Serial.begin(115200);
   Serial.println("Starting BLE work!");
+  analogReadResolution(12);
   bleKeyboard.begin();              //initialise bluetooth keyboard hid
   kbd_init();                       //initialise ps2 keyboard
   setTypematicByte();
+  
 }
 
 void loop(){
@@ -256,4 +253,8 @@ void loop(){
   Serial.println(Keyboard_Data, HEX);  //print the keycode in serial
   handle_LEDS();      //function to send led status to leds on ps2 keyboard
   handle_keypress();  //function for converting ps2 commands into ascii characters
+  uint16_t rawBatteryLevel = analogRead(BAT_LEVEL_PIN);
+  uint16_t calBatteryLevel = ADC_LUT[rawBatteryLevel]/8;
+  //Serial.println(calBatteryLevel);
+  //bleKeyboard.setBatteryLevel(calBatteryLevel);
 }

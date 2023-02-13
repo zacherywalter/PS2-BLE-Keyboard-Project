@@ -4,7 +4,7 @@ by Zachery Walter 21.01.2023
 
 ## About
 
-This Project includes code to help revive your old ps2 keyboard to a bluetooth keyboard using an [esp32-wroom-32 board](https://de.aliexpress.com/item/32858054775.html?spm=a2g0o.order_list.order_list_main.10.6e215c5fzWOnmD&gatewayAdapt=glo2deu) programmed with Arduino IDE. The PS2 keyboard used is similiar to [this one](https://www.mindfactory.de/product_info.php/KeySonic-ACK-595C--Mini-Tastatur-Weiss-Deutsch-PS2-USB_590520.html) but any ps2 keyboard should do.
+This Project includes code to help revive your old ps2 keyboard to a bluetooth keyboard using an [esp32-wemos-D1-mini board](https://de.aliexpress.com/item/32858054775.html?spm=a2g0o.order_list.order_list_main.10.6e215c5fzWOnmD&gatewayAdapt=glo2deu) programmed with Arduino IDE. The PS2 keyboard used is similiar to [this one](https://www.mindfactory.de/product_info.php/KeySonic-ACK-595C--Mini-Tastatur-Weiss-Deutsch-PS2-USB_590520.html) but any ps2 keyboard should do.
 
 ### Dependencies
 
@@ -55,3 +55,11 @@ This Project includes code to help revive your old ps2 keyboard to a bluetooth k
 - A useful key event view: https://w3c.github.io/uievents/tools/key-event-viewer.html
 
 - See Keycodes.txt to see a list of Collected Keycodes in HEX
+
+
+
+### BatteryMeasurement
+
+adc calibrated according to: https://github.com/e-tinkers/esp32-adc-calibrate
+
+this generates the Look up table in espAdcLut.h
